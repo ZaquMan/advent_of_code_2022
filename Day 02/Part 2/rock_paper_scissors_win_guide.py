@@ -14,53 +14,47 @@ win = 6
 draw = 3
 # Don't need to add points in the event of a loss, so no need to enumerate it
 
-rounds = []
-
-with open(realpath('Day 02\\input.txt'),'r') as f:
-    for line in f:
-        rounds.append((line[0],line[2]))
 
 total_points = 0
 
-for round in rounds:
-    #opponent_play = round[0], player_play = round[1]
-    # Python 3.10 finally added switch/case style conditional statements!
-    match round[1]:
-        case 'X': # Player LOSE
-            match round[0]:
-                case 'A': # Opponent Rock
-                    # Play Scissors to lose
-                    total_points += 3 # Shape points
-                case 'B': # Oppenent Paper
-                    # Play Rock to lose
-                    total_points += 1 # Shape points
-                case 'C': # Opponent Scissors
-                    # Play Paper to lose
-                    total_points += 2 # Shape points
-            # No points for losing
-        case 'Y': # Player DRAW
-            match round[0]:
-                case 'A': # Opponent Rock
-                    # Play Rock to draw
-                    total_points += 1 # Shape points
-                case 'B': # Oppenent Paper
-                    # Play Paper to draw
-                    total_points += 2 # Shape points
-                case 'C': # Opponent Scissors
-                    # Play Scissors to draw
-                    total_points += 3 # Shape points
-            total_points += draw
-        case 'Z': # Player WIN
-            match round[0]:
-                case 'A': # Opponent Rock
-                    # Play Paper to draw
-                    total_points += 2 # Shape points
-                case 'B': # Oppenent Paper
-                    # Play Scissors to draw
-                    total_points += 3 # Shape points
-                case 'C': # Opponent Scissors
-                    # Play Rock to draw
-                    total_points += 1 # Shape points
-            total_points += win
+with open(realpath('Day 02\\input.txt'),'r') as f:
+    for line in f:
+        match line[2]:
+           case 'X': # Player LOSE
+               match line[0]:
+                   case 'A': # Opponent Rock
+                       # Play Scissors to lose
+                       total_points += 3 # Shape points
+                   case 'B': # Opponent Paper
+                       # Play Rock to lose
+                       total_points += 1 # Shape points
+                   case 'C': # Opponent Scissors
+                       # Play Paper to lose
+                       total_points += 2 # Shape points
+               # No points for losing
+           case 'Y': # Player DRAW
+               match line[0]:
+                   case 'A': # Opponent Rock
+                       # Play Rock to draw
+                       total_points += 1 # Shape points
+                   case 'B': # Opponent Paper
+                       # Play Paper to draw
+                       total_points += 2 # Shape points
+                   case 'C': # Opponent Scissors
+                       # Play Scissors to draw
+                       total_points += 3 # Shape points
+               total_points += draw
+           case 'Z': # Player WIN
+               match line[0]:
+                   case 'A': # Opponent Rock
+                       # Play Paper to draw
+                       total_points += 2 # Shape points
+                   case 'B': # Opponent Paper
+                       # Play Scissors to draw
+                       total_points += 3 # Shape points
+                   case 'C': # Opponent Scissors
+                       # Play Rock to draw
+                       total_points += 1 # Shape points
+               total_points += win
 
 print(total_points)

@@ -23,7 +23,7 @@ with open(realpath('Day 02\\input.txt'),'r') as f:
 total_points = 0
 
 for round in rounds:
-    #opponent_play = round[0], player_play = round[1]\
+    #opponent_play = round[0], player_play = round[1]
     total_points += ord(round[1]) - 87 # Add points for player's shape
 
     # Python 3.10 finally added switch/case style conditional statements!
